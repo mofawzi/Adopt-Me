@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Pet from "./components/Pet";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return React.createElement("div", { id: "something-important" }, [
+    React.createElement("h1", {}, "Adopt Me!"),
+    React.createElement(Pet, {
+      name: "Luna",
+      animal: "Dog",
+      breed: "Havanese",
+    }),
+    React.createElement(Pet, {
+      name: "Pepper",
+      animal: "Bird",
+      breed: "Cockatiel",
+    }),
+    React.createElement(Pet, {
+      name: "Doink",
+      animal: "Cat",
+      breed: "Mixed",
+    }),
+  ]);
 }
 
 export default App;
