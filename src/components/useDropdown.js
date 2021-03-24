@@ -6,9 +6,10 @@ const useDropdown = (label, defaultState, options) => {
   const [state, setState] = useState(defaultState);
 
   // Set Id for each dropdown
-  const id = `use-dropdown-${label.replace(" ", "").toLowercase()}`;
+  const id = `use-dropdown-${label.replace(" ", "").toLowerCase()}`;
 
-  const Dropdown = () => {
+  // Generate dynamic dropdown
+  const Dropdown = () => (
     <label htmlFor={id}>
       {label}
 
@@ -26,8 +27,8 @@ const useDropdown = (label, defaultState, options) => {
           </option>
         ))}
       </select>
-    </label>;
-  };
+    </label>
+  );
 
   // To use it as a hook
   return [state, Dropdown, setState];
