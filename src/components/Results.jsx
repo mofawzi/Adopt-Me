@@ -1,4 +1,3 @@
-import React from 'react'
 import Pet from "./Pet"
 
 const Results = ({pets}) => {
@@ -7,7 +6,7 @@ const Results = ({pets}) => {
       {pets.length === 0 ? <h1>No Pets Found!</h1> : pets.map(pet => 
         <Pet 
         animal = {pet.type}
-        ket = {pet.id}
+        key = {pet.id}
         name = {pet.name}
         breed = {pet.breeds.primary}
         media = {pet.photos}
