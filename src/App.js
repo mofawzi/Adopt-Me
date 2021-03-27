@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import SearchParams from "./components/SearchParams";
+import { Router } from "@reach/router";
 
 function App() {
   return (
