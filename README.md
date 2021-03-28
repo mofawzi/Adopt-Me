@@ -2,6 +2,14 @@
 
 > By: Mohamed Fawzy
 
+## Website URL
+
+[Adopt Me](https://adopt-mee.netlify.app/)
+
+## About
+
+A web application built with Reactjs that allows users to adopt animals using Frontend masters' API
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
