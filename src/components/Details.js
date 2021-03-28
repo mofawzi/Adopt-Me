@@ -3,11 +3,14 @@ import pet from "@frontendmasters/pet";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
 import ThemeContext from "./ThemeContext";
+import { navigate } from "@reach/router";
+import Modal from "./Modal";
 
 const Details = (props) => {
   const [animalState, setAnimalState] = useState({});
   const [loading, setLoading] = useState(true);
   const [theme, setTheme] = useContext(ThemeContext);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     pet.animal(props.id).then(({ animal }) => {
@@ -18,6 +21,7 @@ const Details = (props) => {
         description: animal.description,
         media: animal.photos,
         breed: animal.breeds.primary,
+        url: animal.url,
       });
       setLoading(false);
     }, console.error);
@@ -26,7 +30,19 @@ const Details = (props) => {
   if (loading) {
     return <div>Loading...</div>;
   }
-  const { animal, breed, location, description, name, media } = animalState;
+  const {
+    animal,
+    breed,
+    location,
+    description,
+    name,
+    media,
+    url,
+  } = animalState;
+
+  const toggleModal = () => setShowModal(!showModal);
+
+  const adopt = () => navigate(url);
 
   return (
     <div className="details">
@@ -34,8 +50,21 @@ const Details = (props) => {
       <div>
         <h1>{name}</h1>
         <h2>{`${animal} - ${breed} - ${location}`}</h2>
-        <button style={{ backgroundColor: theme }}>Adopt {name}</button>
+        <button onClick={toggleModal} style={{ backgroundColor: theme }}>
+          Adopt {name}
+        </button>
         <p>{description}</p>
+        {showModal ? (
+          <Modal>
+            <div>
+              <h1>Would you like to adopt {name} ?</h1>
+              <div className="buttons">
+                <button onClick={adopt}>Yes</button>
+                <button onClick={toggleModal}>No, I'm a monster</button>
+              </div>
+            </div>
+          </Modal>
+        ) : null}
       </div>
     </div>
   );
